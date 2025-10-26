@@ -1,0 +1,160 @@
+/* 🌍 Estilos generales */
+:host {
+  display: block;
+  font-family: "Inter", system-ui, sans-serif;
+  background-color: #f0f4f8;
+  min-height: 100vh;
+  padding: 2rem;
+  color: #1e293b;
+}
+
+/* 🧭 Contenedor principal */
+.container {
+  background: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  padding: 2.5rem;
+  margin: auto;
+}
+
+/* 📂 Input de carga */
+input[type="file"] {
+  display: block;
+  background-color: #f1f5f9;
+  border: 2px dashed #cbd5e1;
+  padding: 1rem;
+  width: 100%;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+input[type="file"]:hover {
+  border-color: #3b82f6;
+  background-color: #e0f2fe;
+}
+
+/* 🏷️ Labels */
+label {
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  display: block;
+  color: #334155;
+}
+
+/* 📋 Select múltiple */
+select {
+  border: 1px solid #cbd5e1;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  background-color: #f8fafc;
+  width: 100%;
+  min-height: 120px;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+select:focus {
+  border-color: #3b82f6;
+  outline: none;
+  background-color: #ffffff;
+}
+
+/* 🔘 Botones */
+button {
+  font-weight: 600;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, filter 0.15s ease;
+  border: none;
+}
+button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+button:active {
+  transform: translateY(0);
+}
+
+/* Colores de botones */
+.bg-blue-600 { background-color: #2563eb; color: white; }
+.bg-green-600 { background-color: #16a34a; color: white; }
+
+/* 🎚️ Inputs numéricos y texto */
+input[type="number"],
+input[type="text"] {
+  border: 1px solid #cbd5e1;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  transition: 0.2s;
+  background-color: #f8fafc;
+  width: 100%;
+}
+input[type="number"]:focus,
+input[type="text"]:focus {
+  outline: none;
+  border-color: #3b82f6;
+  background-color: #ffffff;
+}
+
+/* 🧱 Contenedores flexibles */
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+/* 🌈 Tarjetas de estadísticas */
+.border { border: 1px solid #e2e8f0; }
+.shadow { box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+.rounded { border-radius: 0.75rem; }
+
+/* 📈 Sección de estadísticas */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+ul li {
+  padding: 0.3rem 0;
+  border-bottom: 1px dashed #e5e7eb;
+}
+ul li:last-child { border-bottom: none; }
+
+/* 🧠 Títulos */
+h2 {
+  color: #1e3a8a;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+h3 {
+  color: #1e40af;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+/* 🪄 Animación de entrada */
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.container,
+.apx-chart,
+.stats {
+  animation: fadeUp 0.6s ease-in-out;
+}
+
+/* 📊 Gráfico */
+.apx-chart {
+  background-color: #ffffff;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin-top: 1.5rem;
+}
+
+/* 🪟 Responsive */
+@media (max-width: 768px) {
+  .flex { flex-direction: column; align-items: stretch; }
+  .w-24 { width: 100% !important; }
+}

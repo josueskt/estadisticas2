@@ -1,0 +1,66 @@
+<div class="container mx-auto p-4">
+  <h2 class="text-2xl font-bold text-center mb-6">📊 Análisis de Países</h2>
+
+  <!-- Cargar archivo -->
+  <input type="file" (change)="onFileChange($event)" accept=".xlsx,.xls" class="mb-4" />
+
+  <!-- Selección múltiple -->
+  <div class="mb-4">
+    <label class="font-semibold">Selecciona países:</label>
+    <select multiple [(ngModel)]="selectedCountries" class="border p-2 rounded w-full h-32">
+      <option *ngFor="let c of countries" [value]="c">{{ c }}</option>
+    </select>
+  </div>
+
+  <button (click)="showSelected()" class="bg-blue-600 text-white px-4 py-2 rounded mb-6">
+    Mostrar Países Seleccionados
+  </button>
+
+  <!-- Comparación de años -->
+  <div class="flex gap-2 mb-6">
+    <div>
+      <label>País:</label>
+      <input type="text" list="countryList" [(ngModel)]="selectedCountry1" class="border p-2 rounded" />
+    </div>
+    <div>
+      <label>Año 1:</label>
+      <input type="number" [(ngModel)]="selectedYear1" class="border p-2 rounded w-24" />
+    </div>
+    <div>
+      <label>Año 2:</label>
+      <input type="number" [(ngModel)]="selectedYear2" class="border p-2 rounded w-24" />
+    </div>
+    <button (click)="compareYears()" class="bg-green-600 text-white px-4 py-2 rounded">Comparar Años</button>
+  </div>
+
+  <datalist id="countryList">
+    <option *ngFor="let c of countries" [value]="c"></option>
+  </datalist>
+
+  <!-- Gráfico -->
+  <div *ngIf="chartOptions">
+    <apx-chart
+      [series]="chartOptions.series"
+      [chart]="chartOptions.chart"
+      [xaxis]="chartOptions.xaxis"
+      [title]="chartOptions.title"
+      [legend]="chartOptions.legend"
+      [colors]="chartOptions.colors"
+      [plotOptions]="chartOptions.plotOptions">
+    </apx-chart>
+  </div>
+
+  <!-- Estadísticas -->
+  <div *ngIf="stats && selectedCountries.length" class="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div *ngFor="let c of selectedCountries" class="border p-4 rounded shadow">
+      <h3 class="font-bold text-lg mb-2">{{ c }}</h3>
+      <ul>
+        <li>Máximo: {{ stats[c]?.max | number }}</li>
+        <li>Mínimo: {{ stats[c]?.min | number }}</li>
+        <li>Promedio: {{ stats[c]?.avg | number:'1.2-2' }}</li>
+        <li>Moda: {{ stats[c]?.mode | number }}</li>
+        <li>Desviación estándar: {{ stats[c]?.stddev | number:'1.2-2' }}</li>
+      </ul>
+    </div>
+  </div>
+</div>
