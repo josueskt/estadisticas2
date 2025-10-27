@@ -41,7 +41,6 @@ export class App {
     }
   }
 
-  // 📂 Leer archivo Excel y guardar en localStorage
   onFileChange(event: any) {
     const target: DataTransfer = <DataTransfer>(event.target);
     if (target.files.length !== 1) return;
@@ -59,7 +58,6 @@ export class App {
     reader.readAsBinaryString(target.files[0]);
   }
 
-  // 📊 Mostrar países seleccionados con histograma
   showSelected() {
     if (!this.selectedCountries.length) {
       alert('Selecciona al menos un país');
@@ -90,7 +88,6 @@ export class App {
     };
   }
 
-  // 📆 Comparar dos años de un país y mostrar histograma
   compareYears() {
     if (!this.selectedCountry1 || !this.selectedYear1 || !this.selectedYear2) {
       alert('Selecciona un país y dos años para comparar.');
@@ -112,7 +109,6 @@ ${this.selectedYear1}: ${value1.toLocaleString()}
 ${this.selectedYear2}: ${value2.toLocaleString()}
 Cambio: ${diff.toLocaleString()}`);
 
-    // Mostrar como histograma de dos barras
     this.chartOptions = {
       series: [
         {
@@ -134,7 +130,6 @@ Cambio: ${diff.toLocaleString()}`);
     };
   }
 
-  // 📈 Cálculos estadísticos
   calculateStats(values: number[]) {
     const n = values.length;
     const sum = values.reduce((a, b) => a + b, 0);
